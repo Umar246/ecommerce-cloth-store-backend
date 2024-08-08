@@ -5,7 +5,7 @@ const ProductService = require("./ProductService");
 const createReview = async (reqData, user) => {
   const product = await ProductService.findProductById(reqData.productId);
 
-  const review = new Reviews({
+  const review = await new Reviews({
     user: user._id,
     product: product._id,
     review: reqData.review,

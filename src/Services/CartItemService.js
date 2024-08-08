@@ -35,7 +35,7 @@ const updateCartItem = async (userID, cartItemId, cartItemData) => {
 const removeCartItem = async (itemId, userID) => {
   try {
     itemId = itemId.toString();
-    
+
     const item = await findCartItemById(itemId);
 
     if (!item) {
@@ -47,12 +47,14 @@ const removeCartItem = async (itemId, userID) => {
     if (!user) {
       throw new Error("User not found: ", userID);
     }
-    
+
     if (item.userId.toString() == user._id.toString()) {
-      await CartItem.findByIdAndDelete(itemId);
+      const removedItem = await CartItem.findByIdAndDelete(itemId);
+      return removedItem;
     } else {
       throw new Error("You can't remove another user's item");
     }
+
   } catch (error) {
     throw new Error(error.message);
   }

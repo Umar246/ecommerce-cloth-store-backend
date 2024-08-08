@@ -5,10 +5,10 @@ const ProductService = require("./ProductService");
 const createRating = async (reqData, user) => {
   const product = await ProductService.findProductById(reqData.productId);
 
-  const rating = new Ratings({
+  const rating = await new Ratings({
     user: user._id,
     product: product._id,
-    review: reqData.rating,
+    rating: reqData.rating,
     createdAt: new Date(),
   });
 

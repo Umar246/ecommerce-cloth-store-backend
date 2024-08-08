@@ -19,11 +19,9 @@ app.use("/admin/products", adminProductRoutes);
 const productRoutes = require("./Routes/productRoutes");
 app.use("/products", productRoutes);
 
-
 const cartRoutes = require("./Routes/cartRoutes");
 app.use("/cart", cartRoutes);
 
-//TODO Continue API's testing from here 
 const cartItemRoutes = require("./Routes/cartItemRoutes");
 app.use("/cart_items", cartItemRoutes);
 
